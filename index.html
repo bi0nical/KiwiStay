@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jQuery UI link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/dot-luv/jquery-ui.min.css" integrity="sha512-hGYkKzSMWaKWJ0MGIVy3h8Dk1VlEOQhR4NFB18jH3KCSzOhH5Zg6T54f526ne8eZVTlnFMcieY7Zlad9glJ9Mw==" crossorigin="anonymous" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <title>KiwiStay</title>
+  </head>
+  <body>
+
+    <div class="page-container">
+
+        <!-- start of navigation tab -->
+
+        <nav class="nav-container">
+
+            <div class="logo logo--double">
+                <div class="logo__pure-nz"></div>
+                <div class="logo__kiwistay"></div>
+                <h5 class="logo__subtitle">accommodation aotearoa</h5>
+            </div>
+
+            <div container="menu-container">
+                <ul class="menu">
+                    <li class="menu__item">home</li>
+                    <li class="menu__item">explore</li>
+                    <li class="menu__item">saved</li>
+                    <li class="menu__item">about </li>
+                </ul>
+            </div>
+
+            <div class="profile">
+                <div class="profile__img"></div>
+                <a class="profile__link">my account</a>
+                <a class="profile__logout">log out</a>
+            </div>
+
+        </nav>
+
+        <!-- end of navigation tab -->
+        <!-- start of search/listing tab -->
+
+        <section class="search-container">
+
+            <form class="filter-form">
+
+                <div class="filters filters--primary">
+                    <div class="filter-labels">
+                        <h5 class="filter-labels__label">Location</h5>
+                        <h5 class="filter-labels__label">Guests</h5>
+                        <h5 class="filter-labels__label">Arrival</h5>
+                        <h5 class="filter-labels__label">Leaving</h5>
+                    </div>
+
+                    <div class="filter__container filter__container--dark">
+                        <select class="filter__select" name="location" id="location">
+                            <option selected value="any">Any</option>
+                            <option value="Auckland">Auckland</option>
+                            <option value="Bay of Plenty">Bay of Plenty</option>
+                            <option value="Canterbury">Canterbury</option>
+                            <option value="Hawke's Bay">Hawke's Bay</option>
+                            <option value="Northland">Northland</option>
+                            <option value="Otago">Otago</option>
+                            <option value="Southland">Southland</option>
+                            <option value="Tasman">Tasman</option>
+                            <option value="Taranaki">Taranaki</option>
+                            <option value="West coast">West Coast</option>
+                        </select>
+                        <input class="filter__input" autocomplete="off" type="number" placeholder="Guests" name="guests" id="guests" min="1" max="4">
+                        <input class="filter__input" autocomplete="off" placeholder="Choose date" type="text" name="startDate" id="startDate"></select>
+                        <input class="filter__input" autocomplete="off" placeholder="Choose date" type="text" name="endDate" id="endDate"></select>
+                    </div>
+
+                </div>
+
+                <div class="filter__container filter__container--light">
+
+                    <button class="filters__btn" id="typeBtn">Type</button>
+                    <button class="filters__btn" id="priceBtn">Price</button>
+                    <button class="filters__btn" id="ratingBtn">Rating</button>
+                    <div class="search">
+                        <button class="search__btn" id="runSearch">search</button>
+                    </div>
+
+                </div>
+
+                <div class="filter-popup filter-popup--type" id="typePicker">
+
+                    <div class="types-container">
+                        <h4 class="types-container__label">any</h4>
+                        <input value="any" name="type" type="checkbox" class="types-container__checkbox" id="anyTypeFilter" checked></input>
+                    </div>
+
+                    <div class="types-container">
+                        <h4 class="types-container__label">house</h4>
+                        <input value="House" name="type" type="checkbox" class="types-container__checkbox" id="houseTypeFilter"></input>
+                    </div>
+
+                    <div class="types-container">
+                        <h4 class="types-container__label">hotel</h4>
+                        <input value="Hotel" name="type" type="checkbox" class="types-container__checkbox" id="hotelTypeFilter"></input>
+                    </div>
+
+                    <div class="types-container">
+                        <h4 class="types-container__label">motel</h4>
+                        <input value="Motel" name="type" type="checkbox" class="types-container__checkbox" id="motelTypeFilter"></input>
+                    </div>
+
+                    <div class="types-container">
+                        <h4 class="types-container__label">hostel</h4>
+                        <input value="Hostel" name="type" type="checkbox" class="types-container__checkbox" id="hostelTypeFilter"></input>
+                    </div>
+
+                </div>
+
+                <div class="filter-popup" id="pricePicker">
+                    <button class="filter-popup__btn" id="sortByLowestPrice">Sort by lowest</button>
+                    <div class="filter-popup__container">
+                        <div class="scale-container">
+                            <p>
+                                <label for="priceAmount">Price:</label>
+                                <input type="text" id="priceAmount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                            </p>
+                            <div id="setPriceRange"></div>
+                        </div>
+                    </div>
+                    <button class="filter-popup__btn" id="sortByHighestPrice">Sort by highest</button>
+                </div>
+
+                <div class="filter-popup" id="ratingPicker">
+                    <button class="filter-popup__btn" id="sortByLowestRating">Sort by lowest</button>
+                    <div class="filter-popup__container">
+                        <div class="scale-container">
+                            <p>
+                                <label for="amount">Rating:</label>
+                                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                            </p>
+                            <div id="setRatingRange"></div>
+                        </div>
+                    </div>
+                    <button class="filter-popup__btn" id="sortByHighestRating">Sort by highest</button>
+                </div>
+
+            </form>
+
+            <div class="listings-container" id="listings-container"><!-- generated content here --></div>
+
+        </section>
+
+        <!-- end of search/listings tab -->
+        <!-- start of map tab -->
+
+        <section class="map-container">
+
+            <div class="map" id="map"></div>
+
+            <!-- <form class="map-search">
+                <div class="search-bar">
+                    <input type="text" name="search" class="search-bar__search" id="tagSearch" placeholder="Search by keyword">
+                    <button type="submit" class="search-bar__btn" id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+            </form> -->
+
+            <div class="close-btn"><i class="fas fa-times-circle"></i></div>
+
+            <div class="results">
+                <h5 class="results__amount">_</h5>
+                <h5 class="results__label">results found</h5>
+            </div>
+
+        </section>
+
+        <!-- end of maps tab -->
+        <!-- start of listing info tab -->
+
+        <section class="info-container">
+            <!-- generate the following html here based on click -->
+        </section>
+
+        <!-- end of listing info tab -->
+        
+
+        <!-- start of order summary tab -->
+        <section class="summary-container">
+        <!-- generate HTML content here -->
+        </section>
+        <!-- end of order summary tab -->
+
+
+        <!-- start of order confirmation page -->
+        <section class="confirmation-container">
+
+            <div class="confirmation-details">
+
+                <div class="confirmation-top">
+                    <h1 class="confirmation-top__heading">Thank you for booking with KiwiStay!</h1>
+                    <div class="confirmation-top__close" id="closeConfirmation">
+                        <i class="fas fa-times-circle"></i>
+                        <p class="confirmation-top__back">Go Back</p>
+                    </div>
+                </div>
+
+                <div class="confirmation-bottom">
+
+                    <div class="confirmation-titles">
+                        <h2 class="confirmation-titles__h2">Booking Details for</h2>
+                        <h3 class="confirmation-titles__h3">${listings[i].title}</h3>
+                    </div>
+
+                    <div class="booking-widget booking-widget--confirmation">
+                        <img style="background: url(${listings[i].img[0]}); background-size: cover;" class="booking-widget__img booking-widget__img--confirm">
+
+                        <div class="days-wrapper">
+                            <h3 class="booking-widget__guest-total">Guest amount here</h3>
+                            <h3 class="booking-widget__arrival">Start date</h3>
+                            <p class="booking-widget__p">to</p>
+                            <h3 class="booking-widget__leaving">End date</h3>
+                        </div>
+    
+                        <div class="cost-calculator--summary">
+                            <p class="cost-calculator__meal-option">Meal option here</p>
+                            <p class="cost-calculator__total-cost cost-calculator__total-cost--paid">Total cost here</p>
+                        </div>
+                    </div>
+
+                    <div class="confirmation-r">
+                        <div class="host-info host-info--confirm">
+                            <img class="host-info__img" src="${listings[i].hostImg}"></img>
+                            <h2 class="host-info__heading host-info__heading--confirm">Your Host</h2>
+                            <h2 class="host-info__subhead host-info__subhead--confirm">${listings[i].hostName}</h2>
+                            <p class="host-info__quote">“We hope you have a lovely stay at our home! Please feel free to get in contact if you have any more questions.”</p>
+                            <button class="host-info__btn">My Bookings</button>
+                            <button class="host-info__btn host-info__btn--dark">Back to Home</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- end of order confirmation page -->
+
+    </div>
+
+
+    
+    <!-- jQuery -->
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script>
+    <!-- Bootstrap CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <!-- Custom Javascript -->
+    <script src="./js/mapKey.js"></script>
+    <script src="./js/script.js"></script>
+
+  </body>
+</html>

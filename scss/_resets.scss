@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+html{
+    font-size: 65.5%;
+}
+
+input:focus-visible{
+    outline: none;
+}
+
+// remove dotted outline on pressed buttons
+button:focus{
+    outline: 0;
+}
+
+body{
+    overflow: hidden;
+}
+
+img{
+    background-size: cover;
+}

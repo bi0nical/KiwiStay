@@ -1,0 +1,236 @@
+.info-container{
+    position: absolute;
+    top: 50%;
+    left: 15rem;
+    transform: translate(0%, -50%);
+    background: white;
+    width: 75%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: none;
+    border-radius: 0 8rem 0 0;
+}
+.listing-info{
+    display: flex;
+    flex-flow: row wrap;
+}
+.info-l{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+.info-r{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 35%;
+    padding: 2rem 4rem 2rem 2rem;
+}
+
+// =================================
+// start of listing info header
+// =================================
+
+.listing-img{
+    max-height: 70vh;
+    width: 100%;
+}
+
+.d-flex{
+    max-height: 70vh;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+.carousel-inner{
+    max-height: 70vh;
+}
+
+// =================================
+// end of listing info header
+// =================================
+
+// =================================
+// start of listing info body
+// =================================
+
+.info-top{
+    width: 100%;
+    min-height: 30rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 2rem 4rem 2rem 4rem;
+    position: relative;
+}
+
+.info-primary{
+    width: 50%;
+    min-height: 30rem;
+    display: flex;
+    flex-flow: column wrap;
+    &__title{
+        @include title;
+    }
+    &__subtitle{
+        @include subtitle;
+    }
+    &__subhead{
+        @include subhead;
+    }
+    &__ul{
+        display: flex;
+        align-items: center;
+    }
+    &__li{
+        @include p-reg;
+        list-style: none;
+        display: flex;
+        align-items: center;
+    }
+    &__spacer{
+        background: $dark;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 100%;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+.amenities{
+    width: 30rem;
+    height: 25rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    &__li{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        height: 3rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+    &__icon{
+        @include dark-border;
+        border-radius: 100%;
+        width: 3rem;
+        height: 3rem;
+        margin-right: 1.25rem;
+    }
+}
+
+.booking-widget{
+    width: 25rem;
+    height: 30rem;
+    @include dark-border;
+    @include border-curves;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    top: 4rem;
+    right: 4rem;
+}
+
+.cost-calculator{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.info-bottom{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 4rem 2rem 4rem;
+    width: 100%;
+    &__p{
+        padding-bottom: 4rem;
+    }
+    &__subhead{
+        padding-bottom: 1rem;
+    }
+    &__area-img{
+        height: 30vh;
+        width: 100%;
+        @include dark-border;
+        margin-bottom: 1rem;
+        background-size: cover; 
+        background-position: center;
+    }
+}
+
+.reviews{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+}
+
+.review-item{
+    width: 100%;
+    height: 15rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    &__user{
+        height: 10rem;
+        width: 10rem;
+        @include dark-border;
+        object-fit: cover;
+    }
+    &__divider{
+        width: 1rem;
+        height: 0.1rem;
+        background: $dark;
+    }
+    &__bubble{
+        max-width: 100%;
+        min-width: 50%;
+        height: 10rem;
+        padding: 2rem;
+        border-radius: 2rem;
+        @include dark-border;
+    }
+    &__username{
+        width: 30rem;
+        height: 2rem;
+    }
+}
+
+.host-info{
+    height: 10rem;
+    width: 35rem;
+    display: flex;
+    flex-flow: column wrap;
+    &__img{
+        height: 10rem;
+        width: 10rem;
+        border-radius: 100%;
+        object-fit: cover;
+        @include dark-border;
+    }
+    &__heading{
+        @include subtitle;
+        width: 20rem;
+        height: 2rem;
+    }
+    &__subtitle{
+        @include p-reg;
+        text-transform: uppercase;
+        width: 20rem;
+    }
+    &__a{
+        @include p-reg;
+        text-decoration: underline;
+        width: 20rem;
+    }
+}
+
+// =================================
+// end of listing info body
+// =================================

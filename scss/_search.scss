@@ -1,0 +1,240 @@
+.search-container{
+    height: 100vh;
+    min-width: 45rem;
+    border-right: 0.1rem $dark solid;
+    @include column-center-flex;
+};
+.filter{
+    &-form{
+        margin: 2rem 2rem 0 2rem;
+    }
+    &__container{
+        display: flex;
+        width: 40rem;
+        height: 5rem;
+        &--dark{
+            background: $dark;
+            color: $light;
+            // border-radius: 5rem 5rem 0 0;
+        }
+        &--light{
+            background: $light;
+            color: $dark;
+            @include dark-border;
+            margin-top: 0.5rem;
+            // margin-bottom: 2rem;
+            // border-radius: 0 0 5rem 5rem;
+        }
+    }
+    &__select{
+        height: 5rem;
+        color: $light;
+        width: 10rem;
+        border: none;
+        border-right: 0.1rem solid $dark;
+        background: none;
+        padding: 1rem 2rem 1rem 2rem;
+    }
+    &__select option{
+        color: $dark;
+    }
+    &__input{
+        height: 5rem;
+        color: $light;
+        width: 10rem;
+        border: none;
+        border-right: 0.1rem solid $dark;
+        background: none;
+        padding: 1rem 2rem 1rem 2rem;
+    }
+}
+.filters{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    &__btn{
+        width: 10rem;
+        padding: 0.5rem 2rem 0.5rem 2rem;
+        background: none;
+        border: none;
+        border-right: 0.1rem solid $dark;
+    }
+}
+// #ratingBtn{
+//     border-right: none;
+// }
+.filter-labels{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    &__label{
+        padding-right: 2.5rem;
+        padding-left: 2.5rem;
+    }
+}
+#endDate{
+    border-right: none;
+}
+.search{
+    width: 10rem;
+    // padding-top: 1rem;
+    // padding-bottom: 1rem;
+    &__btn{
+        text-transform: uppercase;
+        width: 100%;
+        height: 100%;
+        // border-radius: 0rem 0rem 5rem 0;
+        background: $dark;
+        color: $light;
+        @include dark-border;
+    }
+}
+.listings-container{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+
+// ==============================
+// Pop-up filters
+// ==============================
+
+// Price picker
+.filter-popup{
+    width: 100%;
+    height: 10rem;
+    @include blue-border;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    display: none;
+    &__btn{
+        height: 6rem;
+        width: 6rem;
+        background: none;
+        border-radius: 2rem;
+        @include dark-border;
+    }
+}
+.flex{
+    display: flex;
+}
+.active-btn{
+    border: 0.1rem solid $pacific-blue;
+    color: $pacific-blue;
+}
+.types-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50%;
+    width: 5rem;
+}
+.scale-labels{
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+    &__label{
+        padding: 2rem;
+    }
+    &--rating{
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+    }
+}
+.scale-container{
+    width: 100%;
+}
+.price-scale{
+    width: 100%;
+}
+// End of price picker
+
+// ==============================
+// End of pop-up filters
+// ==============================
+
+// ==============================
+// start of cards
+// ==============================
+
+.card--listing{
+    margin-top: 2rem;
+    width: 40rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: row;
+    border-radius: 3rem 0 3rem 0;
+    @include dark-border;
+    transition-duration: 0.2s;
+    &:hover{
+        cursor: pointer;
+        border-color: $pacific-blue;
+        transition-duration: 0.2s;
+    }
+}
+.card-body--listing{
+    width: 20rem;
+    height: 15rem;
+}
+.card-img-left{
+    height: 19.8rem;
+    width: 20rem;
+    background: #333;
+    color: $light;
+    border-radius: 2.8rem 0 0 0;
+    @include column-center-flex;
+    border-right: 0.1rem solid $dark;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.card-content{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-text{
+    @include p-small;
+    text-transform: uppercase;
+}
+
+.card-amenities{
+    padding-left: 1rem;
+}
+
+.card-detail{
+    display: flex;
+    background: $dark;
+    height: 5rem;
+    align-items: center;
+    color: $light;
+    border-radius: 0 0 2.8rem 0;
+    padding: 1.25rem;
+    &__price-l{
+        font-size: 2.6rem;
+    }
+    &__price-r{
+        padding-left: 0.3rem;      
+    }
+    &__per{
+        font-size: 1rem;
+        border-bottom: 0.1rem solid $pacific-blue;
+        padding-bottom: 0.1rem;
+    }
+    &__total{
+        padding-top: 0.2rem;
+        font-size: 0.8rem;
+    }
+}
+
+// ==============================
+// end of cards
+// ==============================

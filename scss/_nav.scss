@@ -1,0 +1,62 @@
+.nav-container{
+    height: 100vh;
+    width: 15rem;
+    background: $dark;
+    color: $light;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    border-radius: 0 0 4rem 0;
+}
+.logo{
+    @include column-center-flex;
+    height: 20vh;
+    &__pure-nz{
+        height: 2.8rem;
+        width: 11.5rem;
+        background: url(../img/svg/pure-new-zealand-dual-logo.svg);
+        background-position: center;
+        background-size: cover;
+    }
+    &__kiwistay{
+        margin-top: 2rem;
+        height: 2.8rem;
+        width: 11.5rem;
+        background: url(../img/svg/kiwistay.svg);
+        background-position: center;
+        background-size: cover;
+    }
+    &__subtitle{
+        height: 1.4rem;
+        width: 11.5rem;
+        font-size: 0.70rem;
+        padding-top: 0.5rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+.menu{
+    height: 60vh;
+    list-style: none;
+    @include column-center-flex;
+    &__item{
+        padding: 1.5rem;
+        text-transform: uppercase;
+    }
+}
+.profile{
+    height: 20vh;
+    @include column-center-flex;
+    justify-content: flex-end;
+    &__img{
+        height: 7rem;
+        width: 7rem;
+        margin-bottom: 1rem;
+        border-radius: 100%;
+        background: url(../img/user/user-profile.jpg);
+        background-position: center;
+        background-size: cover;
+        @include light-border;
+    }
+}

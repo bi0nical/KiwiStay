@@ -1,0 +1,44 @@
+@mixin column-center-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// borders
+@mixin light-border {
+    border: $light 0.1rem solid;
+}
+@mixin dark-border {
+    border: $dark 0.1rem solid;
+}
+@mixin blue-border {
+    border: $pacific-blue 0.1rem solid;
+}
+@mixin border-curves {
+    border-radius: 2.8rem 0 2.8rem 0;
+}
+
+// text styling
+@mixin p-reg {
+    font-size: 1.2rem;
+}
+@mixin p-small {
+    font-size: 1rem;
+}
+@mixin title {
+    font-size: 4.8rem;
+    text-transform: uppercase;
+}
+@mixin titleSmall {
+    font-size: 3.6rem;
+    text-transform: uppercase;
+}
+@mixin subtitle {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+@mixin subhead {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}

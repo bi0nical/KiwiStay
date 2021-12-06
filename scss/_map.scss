@@ -1,0 +1,99 @@
+.map-container{
+    height: 100vh;
+    width: 100%;
+    background: $pacific-blue;
+    @include column-center-flex;
+    justify-content: space-between;
+    z-index: 0;
+}
+.map{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    z-index: 98;
+}
+.map-search{
+    margin: 2rem;
+    position: absolute;
+    z-index: 99;
+    &__label{
+        color: $light;
+        text-align: center;
+        width: 100%;
+    }
+}
+.search-bar{
+    height: 5rem;
+    width: 50rem;
+    background: $light;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 5rem;
+    @include dark-border;
+    z-index: 99;
+    &__search{
+        height: 100%;
+        width: 100%;
+        border: none;
+        background: none;
+    }
+    &__btn{
+        min-height: 3rem;
+        min-width: 3rem;
+        margin-left: 2rem;
+        border-radius: 100%;
+        @include dark-border;
+    }
+}
+.results{
+    width: 10rem;
+    height: 7rem;
+    padding: 1rem;
+    background: $light;
+    @include dark-border;
+    @include column-center-flex;
+    border-radius: 2rem 2rem 0rem 0rem;
+    position: absolute;
+    bottom: 0%;
+    z-index: 99;
+    &__label{
+        text-align: center;
+    }
+}
+
+.close-btn{
+    position: absolute;
+    top: 2rem;
+    right: 4.5%;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+    z-index: 99;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    color: $dark;
+    &:hover{
+        cursor: pointer;
+        filter: invert(100%);
+    }
+}
+
+.content{
+    height: 30rem;
+    width: 30rem;
+    @include column-center-flex;
+    &__body{
+        @include column-center-flex;
+    }
+    &__img{
+        min-width: 10rem;
+        min-height: 10rem;
+        max-height: 20rem;
+        max-width: 20rem;
+        object-fit: fill;
+    }
+}

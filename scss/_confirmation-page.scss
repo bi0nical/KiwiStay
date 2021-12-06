@@ -1,0 +1,159 @@
+.confirmation-container{
+    position: absolute;
+    top: 50%;
+    left: 15rem;
+    transform: translate(0%, -50%);
+    background: $light;
+    width: 97%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 10rem 5rem 10rem;
+    border-radius: 0 8rem 0 0;
+    // change background to the listing's area in js
+}
+
+.confirmation-details{
+    display: flex;
+    flex-direction: column;
+    @include dark-border;
+    border-radius: 0 4rem 0 4rem;
+    max-width: 100rem;
+    transform: translateX(-5rem);
+}
+
+.confirmation-top{
+    height: 10rem;
+    background: $dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 4rem 0 0;
+    &__heading{
+        color: $light;
+        @include titleSmall;
+        font-size: 2.6rem;
+        padding: 4rem;
+        width: 75%;
+        transform: translateX(15%);
+        text-align: center;
+    }
+    &__close{
+        position: relative;
+        width: 25%;
+        height: 5rem;
+        border-radius: 100%;
+        z-index: 99;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        padding-left: 4rem;
+        color: $light;
+        transform: translateY(1rem);
+        &:hover{
+            color: $pacific-blue;
+            cursor: pointer;
+        }
+    }
+    &__back{
+        @include p-reg;
+        padding-top: 0.5rem;
+    }
+}
+
+.confirmation-bottom{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    padding: 0 2rem 4rem 2rem;
+    justify-content: center;
+}
+
+.confirmation-titles{
+    padding: 4rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &__h2{
+        color: $pacific-blue;
+        @include subhead;
+    }
+    &__h3{
+        @include subhead;
+        font-weight: 500;
+    }
+}
+
+.booking-widget--confirmation{
+    position: relative;
+    border: none;
+    height: 100%;
+    width: 30rem;
+    margin: 0 2rem 2rem 2rem;
+    top: 0;
+    right: 0;
+}
+
+.confirmation-r{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 2rem 2rem 2rem;
+}
+
+.host-info{
+    &__heading--confirm{
+        text-align: center;
+        padding: 1rem;
+        color: $pacific-blue;
+    }
+    &__subhead--confirm{
+        text-align: center;
+        padding: 0.5rem 1rem 2rem 1rem;
+    }
+    &--confirm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    }
+    &__quote{
+        padding: 0rem 0rem 4rem 0rem;
+        @include p-reg;
+    }
+    &__btn{
+        width: 100%;
+        height: 5rem;
+        @include dark-border;
+        background: $light;
+        border-radius: 2rem;
+        &:hover{
+            border-color: $pacific-blue;
+            color: $pacific-blue;
+        }
+        &--dark{
+            border: none;
+            background: $dark;
+            margin-top: 1rem;
+            color: $light;
+            &:hover{
+                background: $pacific-blue;
+                color: $light;
+            }
+        }
+    }
+}
+
+.booking-widget__img--confirm{
+    margin-bottom: 1rem;
+}
