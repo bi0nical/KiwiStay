@@ -161,7 +161,7 @@ let listings = [
         area: 'Canterbury',
         img: ['./img/listing/id-7/chch-hostel-a.jpg', './img/listing/id-7/chch-hostel-b.jpg', './img/listing/id-7/chch-hostel-c.jpg'],
         areaImg: './img/area/canterbury.jpg',
-        rating: 3,
+        rating: 2,
         isSaved: false,
         amenities: ['Shared Kitchen', 'Parking Available', 'Weekly Events', 'Shared Bathrooms'],
         extras: ['Lorem', 'Lorem Ipsum'],
@@ -173,7 +173,7 @@ let listings = [
         coordinates: [-43.53185275589354, 172.63015537157355],
         tagline: 'Lorem Ipsum',
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac est orci. Mauris eget condimentum diam. In hac habitasse platea dictumst. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacinia porttitor leo eget eleifend. Sed facilisis ornare lectus vitae fringilla. Nullam et lacinia sapien, ac aliquet arcu. Proin interdum, tortor in congue fermentum, velit nisi vulputate felis, vel faucibus lorem eros ut libero. Phasellus ullamcorper ipsum ut ultrices hendrerit. Vestibulum rhoncus placerat enim commodo dignissim. Maecenas vitae diam in elit tristique ultricies. Mauris aliquet vestibulum nunc nec molestie. Vivamus luctus vulputate neque, nec faucibus mauris consectetur eget. Suspendisse quam nisi, eleifend vel lacus id, sollicitudin venenatis sem",
-        userReviews: ['Made some great friends here.', 'You get what you pay for, staff were quite helpful.', 'My go-to spot to stay when visiting.'],
+        userReviews: ['Made some great friends here.', 'You get what you pay for, staff were quite helpful.', 'Too noisy for me, perfect for backpackers.'],
         hostName: 'Arlo Barnes',
         hostImg: './img/user/host-07.jpg',
         tags: ['city', 'cheap'],
@@ -519,7 +519,7 @@ $('#ratingBtn').click(function(event){
 function initMap(){
     const map = new google.maps.Map(document.getElementById('map'),{
         zoom: 6,
-        center: {lat:-40.9006,lng:174.8860},
+        center: {lat:-40.9006,lng:165.8860},
         disableDefaultUI: true,
     });
 
@@ -570,16 +570,12 @@ function initMap(){
     
 }
 
-// function for adding markers
-// activated in generateCard function
-// function addMarkers(lat, lng){
-//     let listingLatLng = { lat: lat, lng: lng};
-//     new google.maps.Marker({
-//         position: listingLatLng,
-//         map,
-//         title: "Hello World!",
-//       });
-// }
+function tallySearchHits(){
+    console.log('running hits counter');
+    let hits = $('.listings-container > div').length;
+    console.log(hits);
+    $('#hits').html(hits);
+}
 
 // ================================
 // end of google maps API setup
@@ -689,7 +685,10 @@ $(document).ready(function(){
                         <h3 class="card-detail__price-l">$${listings[i].pricePerNight}</h3>
                         <div class="card-detail__price-r">
                             <div class="card-detail__per">per night</div>
-                            <div class="card-detail__total">--- total</div>
+                        </div>
+                        <div class="star-rating">
+                            <div class="star-rating__star"><i class="fas fa-star"></i></div>
+                            <p class="star-rating__rating">${listings[i].rating} avg.</p>
                         </div>
                     </div>
                 </div>
@@ -697,8 +696,7 @@ $(document).ready(function(){
             `
         );
         showListingInfo();
-        getFormData();
-        fillFormData();
+        tallySearchHits();
     }
 
     function showAllListingCards(){
@@ -707,7 +705,12 @@ $(document).ready(function(){
         }
     }
 
-    showAllListingCards();
+    function searchPrompt(){
+        $('#listings-container').html(`
+        <p class="listings-container__prompt">Enter your search details above and hit "search" to see listing results.</p>
+        `);
+    }
+    searchPrompt();
 
     // ================================
     // end of default cards and card generator function
@@ -721,13 +724,21 @@ $(document).ready(function(){
         $('.card').click(function(){
             for(let i = 0; i < listings.length; i++){
                 if(parseInt(this.id) === listings[i].id){
+                    let start = $("#startDate").datepicker('getDate');
+                    let end = $("#endDate").datepicker('getDate');
+                    let days = (end - start)/100/60/60/24/10;
+                    let guestSelection = parseInt($('#guests').val());
+                    let arriveDate = $("#startDate").val();
+                    let leaveDate = $("#endDate").val();
+                    let totalPrice = (listings[i].pricePerNight * guestSelection);
                     $(".info-container").css({display: "flex"});
                     $(".map-search").toggle();
                     $(".map").css({filter: "blur(100px)"})
-                    $(".close-btn").css({display: "flex"});
                     $(".info-container").empty();
                     $(".info-container").html(
                         `
+
+                        <div class="close-btn"><i class="fas fa-times-circle"></i></div>
                         <div class="listing-info">
 
                     <div class="listing-img">
@@ -845,13 +856,13 @@ $(document).ready(function(){
 
                             <h2 class="booking-widget__heading">Booking Details</h2>
 
-                            <input placeholder="4 guests" type="number" class="booking-widget__guests">
-                            <input id="startDateListingInfo" placeholder="Arrival date" type="text" class="booking-widget__start-date">
-                            <input id="endDateListingInfo" placeholder="Leaving date" type="text" class="booking-widget__end-date">
+                            <h3 class="booking-widget__guests">${guestSelection} Guests</h3>
+                            <h3 id="startDateListingInfo" class="booking-widget__date">Arriving on ${arriveDate}</h3>
+                            <h3 id="endDateListingInfo" class="booking-widget__date">Leaving on ${leaveDate}</h3>
 
                             <div class="cost-calculator">
                                 <h2 class="cost-calculator__per-night">$<span id="price">${listings[i].pricePerNight}</span> per night</h2>
-                                <p class="cost-calculator__total-cost"></p>
+                                <p class="cost-calculator__total-cost">Total Cost: $${totalPrice}</p>
                             </div>
 
                             <button type="button" id="confirmListing" class="booking-widget__confirm">Make a booking</button>
@@ -863,31 +874,20 @@ $(document).ready(function(){
                 </div>
                         `
                     );
-                    // run datepicker for new input fields
-                    $('#startDateListingInfo').datepicker({
-                        dateFormat: 'yy-mm-dd',
-                        changeMonth: true,
-                        minDate: new Date(),
-                        maxDate: '+1y',
-                        onselect: function(date){
-                            let selectDate = new Date(date);
-                            let msecInADay = 86400000;
-                            let stDate = new Date(selectDate.getTime() + msecInADay);
-                
-                            $('#endDateListingInfo').datepicker('option', 'minDate', stDate);
-                            // change 14 below with variable for maximum days for listing
-                            let endDate = new Date(selectDate.getTime() + 14 * msecInADay);
-                
-                            $('#endDateListingInfo').datepicker('option', 'maxDate', endDate);
-                        },
-                    });
-                
-                    $('#endDateListingInfo').datepicker({
-                        dateFormat: 'yy-mm-dd',
-                        changeMonth: true,
-                    });
-                    // confirm listing button that 
-                    // opens summary
+                    $(".close-btn").css('display', 'flex');
+                    // close listing info button
+                    function closeListingInfo(){
+                        $(".close-btn").click(function(event){
+                            event.preventDefault();
+                            $(".close-btn").css({display: "none"});
+                            $(".info-container").css({display: "none"});
+                            $(".map-search").toggle();
+                            $(".map").css({filter: "none"});
+                     });
+                    }
+                    closeListingInfo();
+                    // end of listing info close button
+                    // confirm listing button that opens summary
                     function confirmListing(){
                         $("#confirmListing").click(function(){
                             $('.summary-container').css({display: "flex"});
@@ -909,15 +909,15 @@ $(document).ready(function(){
                                     <h2 class="booking-widget__heading booking-widget__heading--summary">${listings[i].title}</h2>
 
                                     <div class="days-wrapper">
-                                        <h3 class="booking-widget__guest-total">Guest amount here</h3>
-                                        <h3 class="booking-widget__arrival">Start date</h3>
+                                        <h3 class="booking-widget__guest-total">${guestSelection} Guests</h3>
+                                        <h3 class="booking-widget__arrival">${arriveDate}</h3>
                                         <p class="booking-widget__p">to</p>
-                                        <h3 class="booking-widget__leaving">End date</h3>
+                                        <h3 class="booking-widget__leaving">${leaveDate}</h3>
                                     </div>
                 
                                     <div class=" cost-calculator--summary">
                                         <h2 class="cost-calculator__per-night">$<span id="price">${listings[i].pricePerNight}</span> per night</h2>
-                                        <p class="cost-calculator__total-cost cost-calculator__total-cost--summary">Total cost here</p>
+                                        <p class="cost-calculator__total-cost cost-calculator__total-cost--summary">$${totalPrice} total</p>
                                     </div>
                 
                                 </form>
@@ -930,116 +930,152 @@ $(document).ready(function(){
                                     <h1 class="booking-form__heading">Booking Info</h1>
                 
                                     <label class="booking-form__label" for="fullName">Full name</label>
-                                    <input class="booking-form__input" type="text" id="fullName" placeholder="First Last">
+                                    <input required class="booking-form__input" type="text" id="fullName" placeholder="First Last">
                 
                                     <label class="booking-form__label" for="homeAddress">Home address</label>
-                                    <input class="booking-form__input" type="text" id="homeAddress" placeholder="123 Street, City, Country">
+                                    <input required class="booking-form__input" type="text" id="homeAddress" placeholder="123 Street, City, Country">
                 
                                     <label class="booking-form__label" for="contactNo">Contact number</label>
-                                    <input class="booking-form__input" type="tel" id="contactNo" placeholder="0123456789" pattern="[0-9]{10-11}">
+                                    <input required class="booking-form__input" type="tel" id="contactNo" placeholder="0123456789">
                 
                                     <label class="booking-form__label" for="email">Email</label>
-                                    <input class="booking-form__input" type="text" id="email" placeholder="name@email.com">
+                                    <input required class="booking-form__input" type="text" id="email" placeholder="name@email.com">
                 
                                     <label class="booking-form__label" for="mealOption">Meal options</label>
-                                    <select class="booking-form__select">
+                                    <select id="mealOption" class="booking-form__select">
                                         <option class="booking-form__option" value="0">None</option>
                                         <option class="booking-form__option" value="10">Breakfast ($10 per person, per day)</option>
                                         <option class="booking-form__option" value="15">Lunch ($15 per person, per day)</option>
                                         <option class="booking-form__option" value="20">Dinner ($20 per person, per day)</option>
                                     </select>
                 
-                                    <button class="booking-form__confirm" id="confirmBooking" type="submit">Confirm & Pay</button>
+                                    <button class="booking-form__confirm" id="confirmBooking" type="button">Confirm & Pay</button>
                 
                                 </form>
                 
                             </div>
                                 `
                             );
-                            calculateTotalByFormData();
+                            $('.summary-container').mouseover(function(){
+                                let mealPrice = parseInt($('.booking-form__select').val());
+                                let totalPriceWithFood = ((guestSelection * mealPrice) * days) + totalPrice;
+                                console.log(totalPriceWithFood);
+                                $('.cost-calculator__total-cost--summary').html('$' + totalPriceWithFood + ' total')
+                            });
                              // close listing info button
                             $('#closeSummary').click(function(){
                             $(".summary-container").css({display: "none"});
                             });
                             // end of listing info close button
+
+                            // ====================================
+                            // start of confirmation page functions
+                            // ====================================
+
+                            function confirmationPage(fullName, homeAddress, contactNo, email, mealOption){
+                                let mealPrice = parseInt($('.booking-form__select').val());
+                                let totalPriceWithFood = ((guestSelection * mealPrice) * days) + totalPrice;
+                                $('.confirmation-container').css('background', `url(${listings[i].areaImg})`);
+                                $('.confirmation-container').css('background-position', 'center');
+                                $('.confirmation-container').css('background-size', 'cover');
+                                $('.confirmation-container').html(`
+                                <div class="confirmation-details">
+
+                                <div class="confirmation-top">
+                                    <h1 class="confirmation-top__heading">Thank you for booking with KiwiStay!</h1>
+                                    <div class="confirmation-top__close" id="closeConfirmation">
+                                        <i class="fas fa-times-circle"></i>
+                                        <p class="confirmation-top__back">Go Back</p>
+                                    </div>
+                                </div>
+                
+                                <div class="confirmation-bottom">
+                
+                                    <div class="confirmation-titles">
+                                        <h2 class="confirmation-titles__h2">Booking Details for</h2>
+                                        <h3 class="confirmation-titles__h3">${listings[i].title}</h3>
+                                    </div>
+                
+                                    <div class="booking-widget booking-widget--confirmation">
+                                        <img style="background: url(${listings[i].img[0]}); background-size: cover;" class="booking-widget__img booking-widget__img--confirm">
+                
+                                        <div class="days-wrapper">
+                                            <h3 class="booking-widget__guest-total">${guestSelection} Guests</h3>
+                                            <h3 class="booking-widget__arrival">Arriving ${arriveDate}</h3>
+                                            <h3 class="booking-widget__leaving">Leaving ${leaveDate}</h3>
+                                        </div>
+                    
+                                        <div class="cost-calculator--summary">
+                                            <p class="cost-calculator__meal-option"><b>Meal Option:</b> ${mealOption}</p>
+                                            <p class="cost-calculator__total-cost cost-calculator__total-cost--paid">$${totalPriceWithFood} total</p>
+                                            <p class="cost-calculator__paid">paid</p>
+                                        </div>
+                                    </div>
+                
+                                    <div class="confirmation-r">
+                                        <div class="host-info host-info--confirm">
+                                            <img class="host-info__img" src="${listings[i].hostImg}"></img>
+                                            <h2 class="host-info__heading host-info__heading--confirm">Your Host</h2>
+                                            <h2 class="host-info__subhead host-info__subhead--confirm">${listings[i].hostName}</h2>
+                                            <p class="host-info__quote">“We hope you have a lovely stay at our home! Please feel free to get in contact if you have any more questions.”</p>
+                                            <ul class="user-details">
+                                                <li class="user-details__li"><b>Booking for:</b> ${fullName}</li>
+                                                <li class="user-details__li"><b>Your address:</b> ${homeAddress}</li>
+                                                <li class="user-details__li"><b>Your email:</b> ${email}</li>
+                                            </ul>
+                                            <p class="host-info__notice">You will be emailed shortly with further instructions including the listing address and tips for your trip.</p>
+                                            <button class="host-info__btn">My Bookings</button>
+                                            <button id="closeConfirmationBtnDark" class="host-info__btn host-info__btn--dark">Back to Home</button>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
+                                `);
+                                $('#closeConfirmation').click(function(){
+                                    console.log('close clicked')
+                                    $('.confirmation-container').css({display: 'none'});
+                                    $('.info-container').css({display: 'none'});
+                                    $(".map").css({filter: "blur(0)"});
+                                    $(".close-btn").css({display: "none"});
+                                });
+                                $('#closeConfirmationBtnDark').click(function(){
+                                    console.log('close clicked')
+                                    $('.confirmation-container').css({display: 'none'});
+                                    $('.info-container').css({display: 'none'});
+                                    $(".map").css({filter: "blur(0)"});
+                                    $(".close-btn").css({display: "none"});
+                                });
+                            }
+
+                            $('.booking-form__confirm').click(function(){
+                                // check inputs are filled in
+                                // collect form data in variables
+                                let fullName = $('#fullName').val();
+                                let homeAddress = $('#homeAddress').val();
+                                let contactNo = $('#contactNo').val();
+                                let email = $('#email').val();
+                                let mealOption = $('#mealOption option:selected').text();
+                                if(fullName === '' || homeAddress === '' || contactNo === '' || email === ''){
+                                    alert('Please fill in all fields to continue.')
+                                } else {
+                                    $('.summary-container').css({display: 'none'});
+                                    $('.confirmation-container').css({display: 'flex'});
+                                    confirmationPage(fullName, homeAddress, contactNo, email, mealOption);
+                                }
+                            });
+
+                            // ====================================
+                            // start of confirmation page functions
+                            // ====================================
                         })
                     }
                     confirmListing();
-                    $(".page-container").mouseover(function(){
-                        finalTotal();
-                    });
-                    // end of confirm listing button
                 }
             }
         });
     }
     showListingInfo();
-
-    // close listing info button
-    function closeListingInfo(){
-        $(".close-btn").click(function(event){
-            event.preventDefault();
-            $(".close-btn").css({display: "none"});
-            $(".info-container").css({display: "none"});
-            $(".map-search").toggle();
-            $(".map").css({filter: "none"});
-        });
-    }
-    closeListingInfo();
-    // end of listing info close button
-
-    // start of fillFormData
-    function fillFormData(guests, startDate, endDate){
-        $(".booking-widget__guests").val(guests);
-        $(".booking-widget__start-date").val(startDate);
-        $(".booking-widget__end-date").val(endDate);
-    }
-    // end of fillFormData
-
-    // start of getFormData
-    function getFormData(){
-        $(".card").click(function(){
-            let guestSelection = $("#guests").val();
-            let arrivalDate = $("#startDate").val();
-            let leavingDate = $("#endDate").val();
-            fillFormData(guestSelection, arrivalDate, leavingDate);
-        });
-    }
-    getFormData();
-    // end of getFormData
-
-    // start of update all input fields
-    // $(".booking-widget__start-date").focusout(function(){
-    //     let arrivalDate = $("#startDateListingInfo").val();
-    //     $("#startDate").val(arrivalDate);
-    // });
-    // $(".booking-widget__end-date").focusout(function(){
-    //     let leavingDate = $("#endDateListingInfo").val();
-    //     $("#endDate").val(leavingDate);
-    // });
-    // end of update all input fields
-
-
-    // start of calculate total price
-    $(".info-container").mouseover(function(){
-        calculateTotalByFormData();
-    });
-
-    function calculateTotalByFormData(){
-        let start = $("#startDateListingInfo").datepicker('getDate');
-        let startShow = start.toDateString();
-        let end = $("#endDateListingInfo").datepicker('getDate');
-        let endShow = end.toDateString();
-        let days = (end - start)/100/60/60/24/10;
-        let pricePerNight = parseInt($("#price").html());
-        let guests = $('.booking-widget__guests').val();
-        let totalCost = days * pricePerNight;
-        $(".cost-calculator__total-cost").html('$' + totalCost + ' total');
-        $(".booking-widget__guest-total").html(guests + ' guests');
-        $('.booking-widget__arrival').html(startShow);
-        $('.booking-widget__leaving').html(endShow);
-        return days;
-    }
 
     function calculateTotalsFinal(){
         let start = $("#startDateListingInfo").datepicker('getDate');
@@ -1050,7 +1086,6 @@ $(document).ready(function(){
         $(".cost-calculator__total-cost").html('$' + totalCost + ' total');
     }
     // end of calculate total price
-
 
     // ================================
     // end of window functions
@@ -1116,35 +1151,37 @@ $(document).ready(function(){
             }
         }
         if($("#listings-container div").length === 0){
+            searchPrompt();
             alert("No results found for your search");
-        }
-    }
-
-    function finalTotal(){
-        let meal = $('.booking-form__select').val();
-        console.log("meal before parse is "+meal);
-        meal = parseInt(meal);
-        console.log("meal is "+meal);
-        let guests = $('.booking-widget__guests').val();
-        guests = parseInt(guests);
-        console.log("guests is "+guests);
-        let nights = calculateTotalByFormData();
-        console.log("nights is "+nights);
-        let pricePerNight = parseInt($("#price").html());
-        console.log("price per night is "+pricePerNight);
-        if(meal === 0){
-            let totalCost = pricePerNight * nights;
-            console.log("total cost is "+totalCost);
-            $('.cost-calculator__total-cost--summary').html('$' + totalCost + ' total');
-        } else {
-            let totalCost = (meal * guests * nights) + (nights * pricePerNight);
-            console.log("total cost is "+totalCost);
-            $('.cost-calculator__total-cost--summary').html('$' + totalCost + ' total');
+            tallySearchHits();
         }
     }
 
     $('.content').click(function(){
         // run the card content function
+    });
+
+    // changes all other checkboxes to false if "any" type filter is picked
+    $('#anyTypeFilter').click(function(){
+        console.log('checkbox function is go');
+        $('#houseTypeFilter').prop("checked", false);
+        $('#hotelTypeFilter').prop("checked", false);
+        $('#motelTypeFilter').prop("checked", false);
+        $('#hostelTypeFilter').prop("checked", false);
+    });
+
+    // changes "any" type filter to false if other checkboxes are true
+    $('#houseTypeFilter').click(function(){
+        $('#anyTypeFilter').prop("checked", false);
+    });
+    $('#hotelTypeFilter').click(function(){
+        $('#anyTypeFilter').prop("checked", false);
+    });
+    $('#motelTypeFilter').click(function(){
+        $('#anyTypeFilter').prop("checked", false);
+    });
+    $('#hostelTypeFilter').click(function(){
+        $('#anyTypeFilter').prop("checked", false);
     });
 
     showListingInfo();

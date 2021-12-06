@@ -2,7 +2,11 @@
     height: 100vh;
     min-width: 45rem;
     border-right: 0.1rem $dark solid;
+    border-radius: 0 0 8rem 0;
     @include column-center-flex;
+    overflow-y: hidden;
+    background: $light;
+    z-index: 1;
 };
 .filter{
     &-form{
@@ -97,6 +101,11 @@
     &::-webkit-scrollbar {
         display: none;
     }
+    &__prompt{
+        padding-top: 2rem;
+        color: $pacific-blue;
+        @include p-reg;
+    }
 }
 
 
@@ -119,6 +128,9 @@
         background: none;
         border-radius: 2rem;
         @include dark-border;
+    }
+    &__container{
+        width: 100%;
     }
 }
 .flex{
@@ -152,6 +164,9 @@
 }
 .price-scale{
     width: 100%;
+}
+.ui-slider-range, .ui-slider-handle{
+    z-index: 0 !important;
 }
 // End of price picker
 
@@ -232,6 +247,20 @@
     &__total{
         padding-top: 0.2rem;
         font-size: 0.8rem;
+    }
+}
+
+.star-rating{
+    padding: 2rem 0.5rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    @include p-small;
+    &__star{
+        display: flex;
+        justify-content: center;
+    }
+    &__rating{
+        padding-left: 0.5rem;
     }
 }
 

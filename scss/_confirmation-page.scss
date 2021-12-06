@@ -1,20 +1,22 @@
 .confirmation-container{
     position: absolute;
     top: 50%;
-    left: 15rem;
+    left: 20rem;
     transform: translate(0%, -50%);
     background: $light;
     width: 97%;
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     padding: 5rem 10rem 5rem 10rem;
     border-radius: 0 8rem 0 0;
-    // change background to the listing's area in js
+    z-index: 4;
+    background-position: center;
+    background-size: cover;
 }
 
 .confirmation-details{
@@ -24,6 +26,7 @@
     border-radius: 0 4rem 0 4rem;
     max-width: 100rem;
     transform: translateX(-5rem);
+    background: $light;
 }
 
 .confirmation-top{
@@ -101,6 +104,25 @@
     top: 0;
     right: 0;
 }
+.booking-widget__arrival, .booking-widget__leaving{
+    @include p-reg;
+    font-weight: 600;
+}
+
+.cost-calculator__meal-option{
+    @include p-reg;
+}
+
+.cost-calculator__total-cost--paid{
+    @include subhead;
+}
+
+.cost-calculator__paid{
+    @include p-reg;
+    color: $pacific-blue;
+    text-transform: uppercase;
+    padding-bottom: 4rem;
+}
 
 .confirmation-r{
     width: 50%;
@@ -128,8 +150,12 @@
     height: 100%;
     }
     &__quote{
-        padding: 0rem 0rem 4rem 0rem;
+        padding: 0rem 0rem 2rem 0rem;
         @include p-reg;
+    }
+    &__notice{
+        @include p-reg;
+        padding-bottom: 2rem;
     }
     &__btn{
         width: 100%;
@@ -151,6 +177,18 @@
                 color: $light;
             }
         }
+    }
+}
+
+.user-details{
+    width: 100%;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    list-style: none;
+    padding-bottom: 1rem;
+    &__li{
+        @include p-reg;
     }
 }
 

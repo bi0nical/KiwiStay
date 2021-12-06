@@ -119,7 +119,7 @@
                 </div>
 
                 <div class="filter-popup" id="pricePicker">
-                    <button class="filter-popup__btn" id="sortByLowestPrice">Sort by lowest</button>
+                    <!-- <button class="filter-popup__btn" id="sortByLowestPrice">Sort by lowest</button> -->
                     <div class="filter-popup__container">
                         <div class="scale-container">
                             <p>
@@ -129,11 +129,11 @@
                             <div id="setPriceRange"></div>
                         </div>
                     </div>
-                    <button class="filter-popup__btn" id="sortByHighestPrice">Sort by highest</button>
+                    <!-- <button class="filter-popup__btn" id="sortByHighestPrice">Sort by highest</button> -->
                 </div>
 
                 <div class="filter-popup" id="ratingPicker">
-                    <button class="filter-popup__btn" id="sortByLowestRating">Sort by lowest</button>
+                    <!-- <button class="filter-popup__btn" id="sortByLowestRating">Sort by lowest</button> -->
                     <div class="filter-popup__container">
                         <div class="scale-container">
                             <p>
@@ -143,7 +143,7 @@
                             <div id="setRatingRange"></div>
                         </div>
                     </div>
-                    <button class="filter-popup__btn" id="sortByHighestRating">Sort by highest</button>
+                    <!-- <button class="filter-popup__btn" id="sortByHighestRating">Sort by highest</button> -->
                 </div>
 
             </form>
@@ -166,10 +166,8 @@
                 </div>
             </form> -->
 
-            <div class="close-btn"><i class="fas fa-times-circle"></i></div>
-
             <div class="results">
-                <h5 class="results__amount">_</h5>
+                <h5 id="hits" class="results__amount">_</h5>
                 <h5 class="results__label">results found</h5>
             </div>
 
@@ -194,53 +192,7 @@
 
         <!-- start of order confirmation page -->
         <section class="confirmation-container">
-
-            <div class="confirmation-details">
-
-                <div class="confirmation-top">
-                    <h1 class="confirmation-top__heading">Thank you for booking with KiwiStay!</h1>
-                    <div class="confirmation-top__close" id="closeConfirmation">
-                        <i class="fas fa-times-circle"></i>
-                        <p class="confirmation-top__back">Go Back</p>
-                    </div>
-                </div>
-
-                <div class="confirmation-bottom">
-
-                    <div class="confirmation-titles">
-                        <h2 class="confirmation-titles__h2">Booking Details for</h2>
-                        <h3 class="confirmation-titles__h3">${listings[i].title}</h3>
-                    </div>
-
-                    <div class="booking-widget booking-widget--confirmation">
-                        <img style="background: url(${listings[i].img[0]}); background-size: cover;" class="booking-widget__img booking-widget__img--confirm">
-
-                        <div class="days-wrapper">
-                            <h3 class="booking-widget__guest-total">Guest amount here</h3>
-                            <h3 class="booking-widget__arrival">Start date</h3>
-                            <p class="booking-widget__p">to</p>
-                            <h3 class="booking-widget__leaving">End date</h3>
-                        </div>
-    
-                        <div class="cost-calculator--summary">
-                            <p class="cost-calculator__meal-option">Meal option here</p>
-                            <p class="cost-calculator__total-cost cost-calculator__total-cost--paid">Total cost here</p>
-                        </div>
-                    </div>
-
-                    <div class="confirmation-r">
-                        <div class="host-info host-info--confirm">
-                            <img class="host-info__img" src="${listings[i].hostImg}"></img>
-                            <h2 class="host-info__heading host-info__heading--confirm">Your Host</h2>
-                            <h2 class="host-info__subhead host-info__subhead--confirm">${listings[i].hostName}</h2>
-                            <p class="host-info__quote">“We hope you have a lovely stay at our home! Please feel free to get in contact if you have any more questions.”</p>
-                            <button class="host-info__btn">My Bookings</button>
-                            <button class="host-info__btn host-info__btn--dark">Back to Home</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+        <!-- generate html content here -->
         </section>
         <!-- end of order confirmation page -->
 

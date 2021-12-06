@@ -1,6 +1,8 @@
 .map-container{
+    position: absolute;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
+    // transform: translateX(-25vw);
     background: $pacific-blue;
     @include column-center-flex;
     justify-content: space-between;
@@ -9,7 +11,7 @@
 .map{
     position: relative;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     z-index: 98;
 }
 .map-search{
@@ -48,6 +50,7 @@
     }
 }
 .results{
+    position: absolute;
     width: 10rem;
     height: 7rem;
     padding: 1rem;
@@ -57,28 +60,10 @@
     border-radius: 2rem 2rem 0rem 0rem;
     position: absolute;
     bottom: 0%;
+    left: 62.5vw;
     z-index: 99;
     &__label{
         text-align: center;
-    }
-}
-
-.close-btn{
-    position: absolute;
-    top: 2rem;
-    right: 4.5%;
-    width: 5rem;
-    height: 5rem;
-    border-radius: 100%;
-    z-index: 99;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    font-size: 5rem;
-    color: $dark;
-    &:hover{
-        cursor: pointer;
-        filter: invert(100%);
     }
 }
 

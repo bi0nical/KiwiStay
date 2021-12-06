@@ -1,7 +1,7 @@
 .summary-container{
     position: absolute;
     top: 50%;
-    left: 15rem;
+    left: 20rem;
     transform: translate(0%, -50%);
     background: $light;
     width: 100%;
@@ -10,8 +10,9 @@
     overflow-x: hidden;
     display: none;
     flex-wrap: wrap;
-    padding-top: 10rem;
+    padding-top: 5vh;
     border-radius: 0 8rem 0 0;
+    z-index: 3;
 }
 
 .summary-top{
@@ -22,15 +23,15 @@
     height: 5rem;
     padding-right: 30rem;
     &__close{
-        position: relative;
+        position: absolute;
         width: 5rem;
         height: 5rem;
-        border-radius: 100%;
         z-index: 99;
         justify-content: center;
         align-items: center;
         font-size: 5rem;
         color: $dark;
+        right: 20rem;
         &:hover{
             color: $pacific-blue;
             cursor: pointer;
@@ -42,7 +43,7 @@
 }
 
 .summary-l{
-    width: 45%;
+    width: 40%;
     height: 60rem;
     display: flex;
     flex-direction: column;
@@ -118,6 +119,11 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+
+.cost-calculator__total-cost--summary{
+    @include p-reg;
+    color: $pacific-blue;
 }
 
 .booking-widget__guest-total{
