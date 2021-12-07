@@ -1,4 +1,3 @@
-
 // let locations = ['otago', 'tasman', 'canterbury', 'southland', 'west coast', 'northland', 'auckland', 'taranaki', "hawke's bay", 'bay of plenty'];
 // ================================
 // start of listings object array
@@ -466,7 +465,7 @@ let listings = [
         hostImg: './img/user/host-08.jpg',
         tags: ['ski', 'snow'],
     }
-]
+];
 // ================================
 // end of listings object array
 // ================================
@@ -555,16 +554,16 @@ function initMap(){
               anchor: marker,
               map,
               shouldFocus: false,
-            })
+            });
         });
         marker.addListener("mouseover", () => {
             infowindow.setOptions({
                 disableAutoPan: true,
-            })
-        })
+            });
+        });
         marker.addListener("mouseout", () => {
             infowindow.close();
-        })
+        });
           
     }
     
@@ -655,7 +654,7 @@ $(document).ready(function(){
             }
         });
         $("#priceAmount").val("$" + $("#setPriceRange").slider("values", 0) + " - $" + $("#setPriceRange").slider("values",1));
-    })
+    });
 
     // ================================
     // end of range sliders
@@ -699,12 +698,6 @@ $(document).ready(function(){
         tallySearchHits();
     }
 
-    function showAllListingCards(){
-        for(let i = 0; i < listings.length; i++){
-            generateListingCard(i);
-        }
-    }
-
     function searchPrompt(){
         $('#listings-container').html(`
         <p class="listings-container__prompt">Enter your search details above and hit "search" to see listing results.</p>
@@ -721,8 +714,10 @@ $(document).ready(function(){
     // ================================
 
     function showListingInfo(){
+
         $('.card').click(function(){
             for(let i = 0; i < listings.length; i++){
+
                 if(parseInt(this.id) === listings[i].id){
                     let start = $("#startDate").datepicker('getDate');
                     let end = $("#endDate").datepicker('getDate');
@@ -733,7 +728,7 @@ $(document).ready(function(){
                     let totalPrice = (listings[i].pricePerNight * guestSelection);
                     $(".info-container").css({display: "flex"});
                     $(".map-search").toggle();
-                    $(".map").css({filter: "blur(100px)"})
+                    $(".map").css({filter: "blur(100px)"});
                     $(".info-container").empty();
                     $(".info-container").html(
                         `
@@ -871,26 +866,22 @@ $(document).ready(function(){
 
                     </div>
 
-                </div>
+                    </div>
                         `
                     );
                     $(".close-btn").css('display', 'flex');
                     // close listing info button
-                    function closeListingInfo(){
-                        $(".close-btn").click(function(event){
-                            event.preventDefault();
-                            $(".close-btn").css({display: "none"});
-                            $(".info-container").css({display: "none"});
-                            $(".map-search").toggle();
-                            $(".map").css({filter: "none"});
-                     });
-                    }
-                    closeListingInfo();
+                    $(".close-btn").click(function(event){
+                    	event.preventDefault();
+                      $(".close-btn").css("display", "none");
+                      $(".info-container").css("display", "none");
+                      $(".map-search").toggle();
+                      $(".map").css("filter", "none");
+                    });
                     // end of listing info close button
                     // confirm listing button that opens summary
-                    function confirmListing(){
                         $("#confirmListing").click(function(){
-                            $('.summary-container').css({display: "flex"});
+                            $('.summary-container').css("display", "flex");
                             $('.summary-container').empty();
                             $('.summary-container').html(
                                 `
@@ -960,7 +951,7 @@ $(document).ready(function(){
                                 let mealPrice = parseInt($('.booking-form__select').val());
                                 let totalPriceWithFood = ((guestSelection * mealPrice) * days) + totalPrice;
                                 console.log(totalPriceWithFood);
-                                $('.cost-calculator__total-cost--summary').html('$' + totalPriceWithFood + ' total')
+                                $('.cost-calculator__total-cost--summary').html('$' + totalPriceWithFood + ' total');
                             });
                              // close listing info button
                             $('#closeSummary').click(function(){
@@ -1030,21 +1021,21 @@ $(document).ready(function(){
                                     </div>
                 
                                 </div>
-                            </div>
+                                </div>
                                 `);
                                 $('#closeConfirmation').click(function(){
-                                    console.log('close clicked')
-                                    $('.confirmation-container').css({display: 'none'});
-                                    $('.info-container').css({display: 'none'});
-                                    $(".map").css({filter: "blur(0)"});
-                                    $(".close-btn").css({display: "none"});
+                                    console.log('close clicked');
+                                    $('.confirmation-container').css("display", 'none');
+                                    $('.info-container').css("display", 'none');
+                                    $(".map").css("filter", "blur(0)");
+                                    $(".close-btn").css("display", "none");
                                 });
                                 $('#closeConfirmationBtnDark').click(function(){
-                                    console.log('close clicked')
-                                    $('.confirmation-container').css({display: 'none'});
-                                    $('.info-container').css({display: 'none'});
-                                    $(".map").css({filter: "blur(0)"});
-                                    $(".close-btn").css({display: "none"});
+                                    console.log('close clicked');
+                                    $('.confirmation-container').css('display', 'none');
+                                    $('.info-container').css('display', 'none');
+                                    $(".map").css('filter', "blur(0)");
+                                    $(".close-btn").css('display', "none");
                                 });
                             }
 
@@ -1057,35 +1048,21 @@ $(document).ready(function(){
                                 let email = $('#email').val();
                                 let mealOption = $('#mealOption option:selected').text();
                                 if(fullName === '' || homeAddress === '' || contactNo === '' || email === ''){
-                                    alert('Please fill in all fields to continue.')
+                                    alert('Please fill in all fields to continue.');
                                 } else {
                                     $('.summary-container').css({display: 'none'});
                                     $('.confirmation-container').css({display: 'flex'});
                                     confirmationPage(fullName, homeAddress, contactNo, email, mealOption);
                                 }
                             });
-
-                            // ====================================
-                            // start of confirmation page functions
-                            // ====================================
-                        })
-                    }
-                    confirmListing();
+                        });
+                } else {
+                    console.log('end of array search');
                 }
             }
         });
     }
     showListingInfo();
-
-    function calculateTotalsFinal(){
-        let start = $("#startDateListingInfo").datepicker('getDate');
-        let end = $("#endDateListingInfo").datepicker('getDate');
-        let days = (end - start)/100/60/60/24/10;
-        let pricePerNight = parseInt($("#price").html());
-        let totalCost = days * pricePerNight;
-        $(".cost-calculator__total-cost").html('$' + totalCost + ' total');
-    }
-    // end of calculate total price
 
     // ================================
     // end of window functions
@@ -1112,15 +1089,15 @@ $(document).ready(function(){
 
         // data validation
         if (guestSelection < 1){
-            alert('You must specify at least one guest. Please change this field to continue.')
+            alert('You must specify at least one guest. Please change this field to continue.');
         } else if(guestSelection > 4){
-            alert('Maximum guests allowed is four. Please change this field to continue.')
+            alert('Maximum guests allowed is four. Please change this field to continue.');
         } else if(arrivalDate === ""){
-            alert('Please specify an arrival date to continue.')
+            alert('Please specify an arrival date to continue.');
         } else if(leavingDate === ""){
-            alert('Please specify a leaving date to continue.')
+            alert('Please specify a leaving date to continue.');
         } else if (typeSelection[0] === undefined){
-            alert('Please select an accommodation type to continue.')
+            alert('Please select an accommodation type to continue.');
         } else {
         // run search as normal
         // first check for location
@@ -1189,6 +1166,3 @@ $(document).ready(function(){
     searchBtn.addEventListener('click', filterListings);
 
 });
-// ================================
-// end of filter search function
-// ================================
