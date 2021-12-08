@@ -4,9 +4,8 @@
 
 // initial variables
 const searchBtn = document.querySelector('#runSearch');
-// get hidden mapKey
-// import { mapKey } from './mapKey.js';
 let keyScript = '<script src="https://maps.googleapis.com/maps/api/js?key=' + mapKey +'&callback=initMap&libraries=places&v=weekly" async defer >';
+// all listing information
 let listings = [
     {
         id: 1,
@@ -525,14 +524,14 @@ function initMap(){
 
         const contentString = `<div class="content" id="${listings[i].id}">` +
         '<div id="siteNotice">' +
-        "</div>" +
+        '</div>' +
         `<h1 id="firstHeading" class="firstHeading">${listings[i].title}</h1>` +
         '<div class="content__body">' +
         `<p>${listings[i].type}</p>` +
         `<p>$${listings[i].pricePerNight} per night</p>` +
         `<img class="content__img" src="${listings[i].img[0]}">` +
-        "</div>" +
-        "</div>";
+        '</div>' +
+        '</div>';
     
     
         const infowindow = new google.maps.InfoWindow({
@@ -548,19 +547,19 @@ function initMap(){
             map,
             title: `$${listings[i].pricePerNight} p/n`,
         });
-        marker.addListener("mouseover", () => {
+        marker.addListener('mouseover', () => {
             infowindow.open({
               anchor: marker,
               map,
               shouldFocus: false,
             });
         });
-        marker.addListener("mouseover", () => {
+        marker.addListener('mouseover', () => {
             infowindow.setOptions({
                 disableAutoPan: true,
             });
         });
-        marker.addListener("mouseout", () => {
+        marker.addListener('mouseout', () => {
             infowindow.close();
         });
           
@@ -614,8 +613,8 @@ $(document).ready(function(){
     });
 
     function dateDiff(){
-        let start = $("#startDate").datepicker('getDate');
-        let end = $("#endDate").datepicker('getDate');
+        let start = $('#startDate').datepicker('getDate');
+        let end = $('#endDate').datepicker('getDate');
         let days = (end - start)/100/60/60/24/10;
         // console.log('datediff ' + days);
         return days;
@@ -629,30 +628,30 @@ $(document).ready(function(){
     // range sliders
     // ================================
     $( function() {
-        $( "#setRatingRange" ).slider({
+        $( '#setRatingRange' ).slider({
         range: true,
         min: 1,
         max: 5,
         values: [ 1, 5 ],
         slide: function( event, ui ) {
-            $( "#amount" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+            $( '#amount' ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
         }
         });
-        $( "#amount" ).val( $( "#setRatingRange" ).slider( "values", 0 ) +
-        " - " + $( "#setRatingRange" ).slider( "values", 1 ) );
+        $( '#amount' ).val( $( '#setRatingRange' ).slider( 'values', 0 ) +
+        " - " + $( '#setRatingRange' ).slider( 'values', 1 ) );
     } );
 
     $(function(){
-        $("#setPriceRange").slider({
+        $('#setPriceRange').slider({
             range: true,
             min: 30,
             max: 500,
             values: [30,500],
             slide: function(event, ui){
-                $("#priceAmount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                $('#priceAmount').val('$' + ui.values[0] + ' - $' + ui.values[1]);
             }
         });
-        $("#priceAmount").val("$" + $("#setPriceRange").slider("values", 0) + " - $" + $("#setPriceRange").slider("values",1));
+        $('#priceAmount').val('$' + $('#setPriceRange').slider('values', 0) + ' - $' + $('#setPriceRange').slider('values',1));
     });
 
     // ================================
@@ -718,18 +717,18 @@ $(document).ready(function(){
             for(let i = 0; i < listings.length; i++){
 
                 if(parseInt(this.id) === listings[i].id){
-                    let start = $("#startDate").datepicker('getDate');
-                    let end = $("#endDate").datepicker('getDate');
+                    let start = $('#startDate').datepicker('getDate');
+                    let end = $('#endDate').datepicker('getDate');
                     let days = (end - start)/100/60/60/24/10;
                     let guestSelection = parseInt($('#guests').val());
-                    let arriveDate = $("#startDate").val();
-                    let leaveDate = $("#endDate").val();
+                    let arriveDate = $('#startDate').val();
+                    let leaveDate = $('#endDate').val();
                     let totalPrice = (listings[i].pricePerNight * guestSelection);
-                    $(".info-container").css({display: "flex"});
-                    $(".map-search").toggle();
-                    $(".map").css({filter: "blur(100px)"});
-                    $(".info-container").empty();
-                    $(".info-container").html(
+                    $('.info-container').css({display: "flex"});
+                    $('.map-search').toggle();
+                    $('.map').css({filter: "blur(100px)"});
+                    $('.info-container').empty();
+                    $('.info-container').html(
                         `
 
                         <div class="close-btn"><i class="fas fa-times-circle"></i></div>
@@ -868,19 +867,19 @@ $(document).ready(function(){
                     </div>
                         `
                     );
-                    $(".close-btn").css('display', 'flex');
+                    $('.close-btn').css('display', 'flex');
                     // close listing info button
-                    $(".close-btn").click(function(event){
+                    $('.close-btn').click(function(event){
                     	event.preventDefault();
-                      $(".close-btn").css("display", "none");
-                      $(".info-container").css("display", "none");
-                      $(".map-search").toggle();
-                      $(".map").css("filter", "none");
+                      $('.close-btn').css('display', 'none');
+                      $('.info-container').css('display', 'none');
+                      $('.map-search').toggle();
+                      $('.map').css('filter', 'none');
                     });
                     // end of listing info close button
                     // confirm listing button that opens summary
-                        $("#confirmListing").click(function(){
-                            $('.summary-container').css("display", "flex");
+                        $('#confirmListing').click(function(){
+                            $('.summary-container').css('display', 'flex');
                             $('.summary-container').empty();
                             $('.summary-container').html(
                                 `
@@ -954,7 +953,7 @@ $(document).ready(function(){
                             });
                              // close listing info button
                             $('#closeSummary').click(function(){
-                            $(".summary-container").css({display: "none"});
+                            $('.summary-container').css({display: 'none'});
                             });
                             // end of listing info close button
 
@@ -1024,17 +1023,17 @@ $(document).ready(function(){
                                 `);
                                 $('#closeConfirmation').click(function(){
                                     console.log('close clicked');
-                                    $('.confirmation-container').css("display", 'none');
-                                    $('.info-container').css("display", 'none');
-                                    $(".map").css("filter", "blur(0)");
-                                    $(".close-btn").css("display", "none");
+                                    $('.confirmation-container').css('display', 'none');
+                                    $('.info-container').css('display', 'none');
+                                    $('.map').css('filter', 'blur(0)');
+                                    $('.close-btn').css('display', 'none');
                                 });
                                 $('#closeConfirmationBtnDark').click(function(){
                                     console.log('close clicked');
                                     $('.confirmation-container').css('display', 'none');
                                     $('.info-container').css('display', 'none');
-                                    $(".map").css('filter', "blur(0)");
-                                    $(".close-btn").css('display', "none");
+                                    $('.map').css('filter', 'blur(0)');
+                                    $('.close-btn').css('display', 'none');
                                 });
                             }
 
@@ -1126,12 +1125,20 @@ $(document).ready(function(){
                 }
             }
         }
-        if($("#listings-container div").length === 0){
+        if($('#listings-container div').length === 0){
             searchPrompt();
-            alert("No results found for your search");
+            alert('No results found for your search');
             tallySearchHits();
         }
     }
+
+    // ================================
+    // end of filter search function
+    // ================================
+
+    // ================================
+    // start of card show and filter input functions
+    // ================================
 
     $('.content').click(function(){
         // run the card content function
@@ -1163,5 +1170,9 @@ $(document).ready(function(){
     showListingInfo();
 
     searchBtn.addEventListener('click', filterListings);
+
+    // ================================
+    // end of card show and filter input functions
+    // ================================
 
 });
