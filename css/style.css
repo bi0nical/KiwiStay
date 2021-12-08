@@ -7810,8 +7810,22 @@ input:focus-visible {
 button:focus {
   outline: 0; }
 
+@font-face {
+  font-family: National;
+  src: url("../fonts/national-light.otf");
+  font-weight: 300; }
+@font-face {
+  font-family: National;
+  src: url("../fonts/national-regular.otf");
+  font-weight: 400; }
+@font-face {
+  font-family: National;
+  src: url("../fonts/national-medium.otf");
+  font-weight: 500; }
 body {
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: National;
+  font-weight: 300; }
 
 img {
   background-size: cover; }
@@ -7868,6 +7882,9 @@ img {
   .menu__item {
     padding: 1.5rem;
     text-transform: uppercase; }
+    .menu__item:hover {
+      color: #00A0D6;
+      cursor: pointer; }
 
 .profile {
   height: 20vh;
@@ -7884,6 +7901,13 @@ img {
     background-position: center;
     background-size: cover;
     border: #ffffff 0.1rem solid; }
+  .profile__link, .profile__logout {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #ffffff; }
+    .profile__link:hover, .profile__logout:hover {
+      color: #00A0D6;
+      cursor: pointer; }
 
 .search-container {
   height: 100vh;
@@ -7918,9 +7942,13 @@ img {
   border: none;
   border-right: 0.1rem solid #000000;
   background: none;
-  padding: 1rem 2rem 1rem 2rem; }
+  padding: 1rem 2rem 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 300; }
 .filter__select option {
-  color: #000000; }
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 300; }
 .filter__input {
   height: 5rem;
   color: #ffffff;
@@ -7928,7 +7956,9 @@ img {
   border: none;
   border-right: 0.1rem solid #000000;
   background: none;
-  padding: 1rem 2rem 1rem 2rem; }
+  padding: 1rem 2rem 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 300; }
 
 .filters {
   display: flex;
@@ -7939,7 +7969,9 @@ img {
     padding: 0.5rem 2rem 0.5rem 2rem;
     background: none;
     border: none;
-    border-right: 0.1rem solid #000000; }
+    border-right: 0.1rem solid #000000;
+    font-size: 1.2rem;
+    font-weight: 300; }
 
 .filter-labels {
   display: flex;
@@ -7960,6 +7992,8 @@ img {
     height: 100%;
     background: #000000;
     color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 300;
     border: #000000 0.1rem solid; }
 
 .listings-container {
@@ -7972,7 +8006,8 @@ img {
   .listings-container__prompt {
     padding-top: 2rem;
     color: #00A0D6;
-    font-size: 1.2rem; }
+    font-size: 1.2rem;
+    font-weight: 300; }
 
 .filter-popup {
   width: 100%;
@@ -8271,6 +8306,7 @@ img {
     align-items: center; }
   .info-primary__li {
     font-size: 1.2rem;
+    font-weight: 300;
     list-style: none;
     display: flex;
     align-items: center; }
@@ -8319,12 +8355,14 @@ img {
   .booking-widget__guests {
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 1.2rem; }
+    font-size: 1.2rem;
+    font-weight: 300; }
   .booking-widget__heading {
     padding-top: 1rem;
     padding-bottom: 2rem; }
   .booking-widget__confirm {
     font-size: 1.2rem;
+    font-weight: 300;
     border: none;
     padding: 1rem 2rem 1rem 2rem;
     background: #000000;
@@ -8336,7 +8374,8 @@ img {
   .booking-widget__date {
     padding-bottom: 1rem;
     border-radius: 1rem;
-    font-size: 1.2rem; }
+    font-size: 1.2rem;
+    font-weight: 300; }
 
 .cost-calculator {
   display: flex;
@@ -8349,6 +8388,7 @@ img {
   border: #000000 0.1rem solid; }
   .cost-calculator__total-cost {
     font-size: 1.2rem;
+    font-weight: 300;
     color: #00A0D6;
     margin-bottom: 0; }
 
@@ -8390,7 +8430,7 @@ img {
     height: 0.1rem;
     background: #000000; }
   .review-item__bubble {
-    max-width: 70%;
+    max-width: 60%;
     min-height: 10rem;
     height: 10rem;
     padding: 2rem;
@@ -8418,10 +8458,12 @@ img {
     height: 2rem; }
   .host-info__subtitle {
     font-size: 1.2rem;
+    font-weight: 300;
     text-transform: uppercase;
     width: 20rem; }
   .host-info__a {
     font-size: 1.2rem;
+    font-weight: 300;
     text-decoration: underline;
     width: 20rem; }
 
@@ -8457,12 +8499,14 @@ img {
     align-items: center;
     font-size: 5rem;
     color: #000000;
-    right: 20rem; }
+    right: 20%; }
     .summary-top__close:hover {
       color: #00A0D6;
       cursor: pointer; }
   .summary-top__back {
-    font-size: 1.2rem; }
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-align: center; }
 
 .summary-l {
   width: 40%;
@@ -8498,6 +8542,7 @@ img {
   .booking-form__label {
     margin-top: 3rem;
     font-size: 1.2rem;
+    font-weight: 300;
     padding-left: 0.5rem; }
   .booking-form__confirm {
     width: 50%;
@@ -8517,7 +8562,8 @@ img {
   justify-content: flex-start; }
 
 .booking-widget__arrival, .booking-widget__leaving {
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+  font-weight: 300; }
 
 .booking-widget__heading--summary {
   font-size: 1.8rem;
@@ -8535,6 +8581,7 @@ img {
 
 .cost-calculator__total-cost--summary {
   font-size: 1.2rem;
+  font-weight: 300;
   color: #00A0D6; }
 
 .booking-widget__guest-total {
@@ -8560,10 +8607,10 @@ img {
 .confirmation-container {
   position: absolute;
   top: 50%;
-  left: 20rem;
+  left: 9%;
   transform: translate(0%, -50%);
   background: #ffffff;
-  width: 97%;
+  width: 100%;
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -8582,8 +8629,7 @@ img {
   flex-direction: column;
   border: #000000 0.1rem solid;
   border-radius: 0 4rem 0 4rem;
-  max-width: 100rem;
-  transform: translateX(-5rem);
+  max-width: 70vw;
   background: #ffffff; }
 
 .confirmation-top {
@@ -8621,6 +8667,7 @@ img {
       cursor: pointer; }
   .confirmation-top__back {
     font-size: 1.2rem;
+    font-weight: 300;
     padding-top: 0.5rem; }
 
 .confirmation-bottom {
@@ -8659,10 +8706,12 @@ img {
 
 .booking-widget__arrival, .booking-widget__leaving {
   font-size: 1.2rem;
+  font-weight: 300;
   font-weight: 600; }
 
 .cost-calculator__meal-option {
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+  font-weight: 300; }
 
 .cost-calculator__total-cost--paid {
   font-size: 1.8rem;
@@ -8671,6 +8720,7 @@ img {
 
 .cost-calculator__paid {
   font-size: 1.2rem;
+  font-weight: 300;
   color: #00A0D6;
   text-transform: uppercase;
   padding-bottom: 4rem; }
@@ -8697,9 +8747,11 @@ img {
   height: 100%; }
 .host-info__quote {
   padding: 0rem 0rem 2rem 0rem;
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+  font-weight: 300; }
 .host-info__notice {
   font-size: 1.2rem;
+  font-weight: 300;
   padding-bottom: 2rem; }
 .host-info__btn {
   width: 100%;
@@ -8727,7 +8779,8 @@ img {
   list-style: none;
   padding-bottom: 1rem; }
   .user-details__li {
-    font-size: 1.2rem; }
+    font-size: 1.2rem;
+    font-weight: 300; }
 
 .booking-widget__img--confirm {
   margin-bottom: 1rem; }

@@ -18,8 +18,28 @@ button:focus{
     outline: 0;
 }
 
+@font-face {
+    font-family: National;
+    src:  url('../fonts/national-light.otf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: National;
+    src:  url('../fonts/national-regular.otf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: National;
+    src:  url('../fonts/national-medium.otf');
+    font-weight: 500;
+}
+
 body{
     overflow: hidden;
+    font-family: National;
+    font-weight: 300;
 }
 
 img{

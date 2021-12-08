@@ -1,4 +1,3 @@
-// let locations = ['otago', 'tasman', 'canterbury', 'southland', 'west coast', 'northland', 'auckland', 'taranaki', "hawke's bay", 'bay of plenty'];
 // ================================
 // start of listings object array
 // ================================

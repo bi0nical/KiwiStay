@@ -31,7 +31,7 @@
         align-items: center;
         font-size: 5rem;
         color: $dark;
-        right: 20rem;
+        right: 20%;
         &:hover{
             color: $pacific-blue;
             cursor: pointer;
@@ -39,6 +39,7 @@
     }
     &__back{
         @include p-reg;
+        text-align: center;
     }
 }
 

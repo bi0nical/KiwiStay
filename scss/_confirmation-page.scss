@@ -1,10 +1,10 @@
 .confirmation-container{
     position: absolute;
     top: 50%;
-    left: 20rem;
+    left: 9%;
     transform: translate(0%, -50%);
     background: $light;
-    width: 97%;
+    width: 100%;
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -24,8 +24,7 @@
     flex-direction: column;
     @include dark-border;
     border-radius: 0 4rem 0 4rem;
-    max-width: 100rem;
-    transform: translateX(-5rem);
+    max-width: 70vw;
     background: $light;
 }
 

@@ -43,6 +43,10 @@
     &__item{
         padding: 1.5rem;
         text-transform: uppercase;
+        &:hover{
+            color: $pacific-blue;
+            cursor: pointer;
+        }
     }
 }
 .profile{
@@ -58,5 +62,13 @@
         background-position: center;
         background-size: cover;
         @include light-border;
+    }
+    &__link, &__logout{
+        @include p-reg;
+        color: $light;
+        &:hover{
+            color: $pacific-blue;
+            cursor: pointer;
+        }
     }
 }
