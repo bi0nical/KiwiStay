@@ -18,5 +18,25 @@ Upcoming additions:
 
 ### JavaScript
 
-* Only use Let or const for variables
+* Only use let or const for variables
 * Use single quotes for strings where possible
+* Written in camelCase
+* Use comment blocks to differentiate contexts, ie for the home page, the listing page, the summary page
+* Use ID tags for dynamic elements that are used in a single instance (ie: section containers, buttons), and classes for dynamic elements that have multiple instances in the DOM (ie: total cost, guest amount)
+* The maps API key must remain seperate from the "script.js" file
+
+### CSS/SCSS
+
+* Written following BEM guidelines
+* Use seperate SCSS files for each major section of the web app
+* Use classes to style wherever possible
+* Try to write in order of visual appearance on the DOM
+* Variables are used for media queries, colours and fonts
+* Mix-ins are used for common text formatting and common container styling
+* Block comments are used to differentiate between major visual sections
+
+### HTML
+
+* Written following BEM guidelines
+* ID tags are written in camelCase
+* Block comments sections are used as buffers between different major sections of the document structure (ie: between section tags)
