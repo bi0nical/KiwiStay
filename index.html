@@ -19,6 +19,10 @@
 
         <nav class="nav-container">
 
+            <div class="mobile-controls mobile-controls--nav">
+                <button id="closeNav" class="mobile-controls__menu-control mobile-controls__menu-control--nav"><i class="far fa-arrow-alt-circle-right"></i></i></button>
+            </div>
+
             <div class="logo logo--double">
                 <div class="logo__pure-nz"></div>
                 <div class="logo__kiwistay"></div>
@@ -46,6 +50,12 @@
         <!-- start of search/listing tab -->
 
         <section class="search-container">
+
+            <div class="mobile-controls">
+                <button id="showMenu" class="mobile-controls__menu-control"><i class="fas fa-bars"></i></button>
+                <div class="logo__kiwistay logo__kiwistay--dark"></div>
+                <button id="showMap" class="mobile-controls__menu-control"><i class="fas fa-map-marked-alt"></i></button>
+            </div>
 
             <form class="filter-form">
 
@@ -156,6 +166,10 @@
         <!-- start of map tab -->
 
         <section class="map-container">
+
+            <div class="mobile-controls mobile-controls--map">
+                <button id="closeMap" class="mobile-controls__menu-control mobile-controls__menu-control--map"><i class="fas fa-th-list"></i></i></button>
+            </div>
 
             <div class="map" id="map"></div>
 

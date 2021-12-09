@@ -7846,6 +7846,13 @@ img {
   justify-content: space-between;
   padding: 2rem;
   z-index: 5; }
+  @media only screen and (max-width: 480px) {
+    .nav-container {
+      display: none;
+      width: 100vw; } }
+  @media only screen and (min-width: 481px) and (max-width: 810px) {
+    .nav-container {
+      display: none; } }
 
 .logo {
   display: flex;
@@ -7865,6 +7872,9 @@ img {
     background: url(../img/svg/kiwistay.svg);
     background-position: center;
     background-size: cover; }
+    .logo__kiwistay--dark {
+      filter: invert(100%);
+      margin-top: 0; }
   .logo__subtitle {
     height: 1.4rem;
     width: 11.5rem;
@@ -7918,15 +7928,72 @@ img {
   flex-direction: column;
   align-items: center;
   overflow-y: hidden;
+  overflow-x: hidden;
   background: #ffffff;
   z-index: 1; }
+  @media only screen and (max-width: 480px) {
+    .search-container {
+      min-width: 0;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      border-radius: 0 0 0 0;
+      border-right: none; } }
+  @media only screen and (min-width: 481px) and (max-width: 810px) {
+    .search-container {
+      width: 100vw; } }
+
+@media only screen and (min-width: 811px) {
+  .mobile-controls {
+    display: none; } }
+@media only screen and (max-width: 480px) {
+  .mobile-controls {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem 0 2rem; }
+    .mobile-controls--nav {
+      position: absolute;
+      justify-content: flex-end;
+      padding-right: 5rem;
+      padding-top: 0rem; }
+    .mobile-controls--map {
+      position: absolute;
+      justify-content: flex-start;
+      padding-left: 2rem;
+      padding-top: 2rem;
+      z-index: 1000; } }
+.mobile-controls__menu-control {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  padding: 2rem;
+  font-size: 2rem;
+  color: #000000;
+  border: #000000 0.1rem solid;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .mobile-controls__menu-control--nav {
+    color: #ffffff;
+    font-size: 4rem; }
 
 .filter-form {
   margin: 2rem 2rem 0 2rem; }
+  @media only screen and (max-width: 480px) {
+    .filter-form {
+      width: 100%;
+      margin: 1rem 0 0 0; } }
 .filter__container {
   display: flex;
   width: 40rem;
   height: 5rem; }
+  @media only screen and (max-width: 480px) {
+    .filter__container {
+      width: 100%;
+      flex-wrap: nowrap; } }
   .filter__container--dark {
     background: #000000;
     color: #ffffff; }
@@ -7945,6 +8012,9 @@ img {
   padding: 1rem 2rem 1rem 2rem;
   font-size: 1.2rem;
   font-weight: 300; }
+  @media only screen and (max-width: 480px) {
+    .filter__select {
+      width: 9rem; } }
 .filter__select option {
   color: #000000;
   font-size: 1.2rem;
@@ -7959,6 +8029,9 @@ img {
   padding: 1rem 2rem 1rem 2rem;
   font-size: 1.2rem;
   font-weight: 300; }
+  @media only screen and (max-width: 480px) {
+    .filter__input {
+      width: 9rem; } }
 
 .filters {
   display: flex;
@@ -7972,6 +8045,9 @@ img {
     border-right: 0.1rem solid #000000;
     font-size: 1.2rem;
     font-weight: 300; }
+  @media only screen and (max-width: 480px) {
+    .filters {
+      flex-wrap: wrap; } }
 
 .filter-labels {
   display: flex;
@@ -8001,13 +8077,20 @@ img {
   overflow-x: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none; }
+  @media only screen and (max-width: 480px) {
+    .listings-container {
+      width: 25rem; } }
   .listings-container::-webkit-scrollbar {
     display: none; }
   .listings-container__prompt {
     padding-top: 2rem;
     color: #00A0D6;
+    text-align: center;
     font-size: 1.2rem;
     font-weight: 300; }
+  @media only screen and (max-width: 480px) {
+    .listings-container {
+      width: 95%; } }
 
 .filter-popup {
   width: 100%;
@@ -8072,6 +8155,9 @@ img {
     cursor: pointer;
     border-color: #00A0D6;
     transition-duration: 0.2s; }
+  @media only screen and (max-width: 480px) {
+    .card--listing {
+      width: auto; } }
 
 .card-body--listing {
   width: 20rem;
@@ -8089,6 +8175,9 @@ img {
   border-right: 0.1rem solid #000000;
   justify-content: center;
   object-fit: cover; }
+  @media only screen and (max-width: 480px) {
+    .card-img-left {
+      width: 15rem; } }
 
 .card-content {
   height: 100%;
@@ -8144,6 +8233,12 @@ img {
   align-items: center;
   justify-content: space-between;
   z-index: 0; }
+  @media only screen and (max-width: 480px) {
+    .map-container {
+      display: none; } }
+  @media only screen and (min-width: 481px) and (max-width: 810px) {
+    .map-container {
+      display: none; } }
 
 .map {
   position: relative;
@@ -8200,6 +8295,9 @@ img {
   z-index: 99; }
   .results__label {
     text-align: center; }
+  @media only screen and (max-width: 480px) {
+    .results {
+      left: 37.5%; } }
 
 .content {
   height: 30rem;
@@ -8231,6 +8329,12 @@ img {
   display: none;
   border-radius: 0 8rem 0 0;
   z-index: 2; }
+  @media only screen and (max-width: 480px) {
+    .info-container {
+      width: 100vw;
+      left: 0;
+      flex-flow: column wrap;
+      border-radius: 0 0 0 0; } }
 
 .close-btn {
   position: absolute;
@@ -8252,11 +8356,17 @@ img {
 .listing-info {
   display: flex;
   flex-flow: row wrap; }
+  @media only screen and (max-width: 480px) {
+    .listing-info {
+      width: 100vw; } }
 
 .info-l {
   display: flex;
   flex-direction: column;
   width: 65%; }
+  @media only screen and (max-width: 480px) {
+    .info-l {
+      width: 100%; } }
 
 .info-r {
   display: flex;
@@ -8264,6 +8374,9 @@ img {
   align-items: flex-end;
   width: 35%;
   padding: 2rem 4rem 2rem 2rem; }
+  @media only screen and (max-width: 480px) {
+    .info-r {
+      width: 100%; } }
 
 .listing-img {
   max-height: 70vh;
@@ -8273,9 +8386,20 @@ img {
   max-height: 70vh;
   object-fit: cover !important;
   object-position: center !important; }
+  @media only screen and (max-width: 480px) {
+    .d-flex {
+      height: 50vh;
+      min-width: 100vw; } }
 
 .carousel-inner {
   max-height: 70vh; }
+  @media only screen and (max-width: 480px) {
+    .carousel-inner {
+      height: 40vh; } }
+
+@media only screen and (max-width: 480px) {
+  .carousel-item {
+    width: auto; } }
 
 .info-top {
   width: 100%;
@@ -8294,6 +8418,9 @@ img {
   .info-primary__title {
     font-size: 4.8rem;
     text-transform: uppercase; }
+    @media only screen and (max-width: 480px) {
+      .info-primary__title {
+        font-size: 4rem; } }
   .info-primary__subtitle {
     font-size: 1.8rem;
     text-transform: uppercase; }
@@ -8431,14 +8558,16 @@ img {
     background: #000000; }
   .review-item__bubble {
     max-width: 60%;
-    min-height: 10rem;
-    height: 10rem;
+    min-height: 5rem;
     padding: 2rem;
     border-radius: 2rem;
     border: #000000 0.1rem solid; }
   .review-item__username {
     width: 30rem;
     height: 2rem; }
+  @media only screen and (max-width: 480px) {
+    .review-item {
+      max-width: 100%; } }
 
 .host-info {
   height: 10rem;
@@ -8451,6 +8580,9 @@ img {
     border-radius: 100%;
     object-fit: cover;
     border: #000000 0.1rem solid; }
+    @media only screen and (max-width: 480px) {
+      .host-info__img {
+        margin-right: 1rem; } }
   .host-info__heading {
     font-size: 1.8rem;
     text-transform: uppercase;
@@ -8482,6 +8614,10 @@ img {
   padding-top: 5vh;
   border-radius: 0 8rem 0 0;
   z-index: 3; }
+  @media only screen and (max-width: 480px) {
+    .summary-container {
+      border-radius: 0 0 0 0;
+      left: 0; } }
 
 .summary-top {
   display: flex;
@@ -8503,6 +8639,15 @@ img {
     .summary-top__close:hover {
       color: #00A0D6;
       cursor: pointer; }
+    @media only screen and (max-width: 480px) {
+      .summary-top__close {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        font-size: 3rem;
+        right: 50%;
+        left: 50%; } }
   .summary-top__back {
     font-size: 1.2rem;
     font-weight: 300;
@@ -8516,6 +8661,12 @@ img {
   align-items: flex-end;
   justify-content: center;
   padding-right: 8rem; }
+  @media only screen and (max-width: 480px) {
+    .summary-l {
+      width: 100%;
+      align-items: center;
+      padding-right: 0;
+      padding-left: 2rem; } }
 
 .summary-r {
   width: 45%;
@@ -8524,6 +8675,9 @@ img {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center; }
+  @media only screen and (max-width: 480px) {
+    .summary-r {
+      width: 100%; } }
 
 .booking-form {
   display: flex;
@@ -8536,9 +8690,15 @@ img {
     background: #ffffff; }
     .booking-form__input:focus, .booking-form__select:focus {
       border-color: #00A0D6; }
+    @media only screen and (max-width: 480px) {
+      .booking-form__input, .booking-form__select {
+        width: 100%; } }
   .booking-form__heading {
     font-size: 3.6rem;
     text-transform: uppercase; }
+    @media only screen and (max-width: 480px) {
+      .booking-form__heading {
+        text-align: center; } }
   .booking-form__label {
     margin-top: 3rem;
     font-size: 1.2rem;
@@ -8555,6 +8715,13 @@ img {
     .booking-form__confirm:hover {
       background: #00A0D6;
       cursor: pointer; }
+    @media only screen and (max-width: 480px) {
+      .booking-form__confirm {
+        width: 100%; } }
+  @media only screen and (max-width: 480px) {
+    .booking-form {
+      width: 100vw;
+      padding: 0 2rem 0 2rem; } }
 
 .booking-widget--summary {
   border: none;
@@ -8623,6 +8790,10 @@ img {
   z-index: 4;
   background-position: center;
   background-size: cover; }
+  @media only screen and (max-width: 480px) {
+    .confirmation-container {
+      left: 0;
+      border-radius: 0 0 0 0; } }
 
 .confirmation-details {
   display: flex;
@@ -8631,6 +8802,9 @@ img {
   border-radius: 0 4rem 0 4rem;
   max-width: 70vw;
   background: #ffffff; }
+  @media only screen and (max-width: 480px) {
+    .confirmation-details {
+      max-width: 100vw; } }
 
 .confirmation-top {
   height: 10rem;
@@ -8665,10 +8839,16 @@ img {
     .confirmation-top__close:hover {
       color: #00A0D6;
       cursor: pointer; }
+    @media only screen and (max-width: 480px) {
+      .confirmation-top__close {
+        padding-left: 0; } }
   .confirmation-top__back {
     font-size: 1.2rem;
     font-weight: 300;
     padding-top: 0.5rem; }
+  @media only screen and (max-width: 480px) {
+    .confirmation-top {
+      height: 15rem; } }
 
 .confirmation-bottom {
   display: flex;
@@ -8676,6 +8856,9 @@ img {
   align-items: flex-start;
   padding: 0 2rem 4rem 2rem;
   justify-content: center; }
+  @media only screen and (max-width: 480px) {
+    .confirmation-bottom {
+      padding: 2rem; } }
 
 .confirmation-titles {
   padding: 4rem;
@@ -8770,6 +8953,9 @@ img {
     .host-info__btn--dark:hover {
       background: #00A0D6;
       color: #ffffff; }
+@media only screen and (max-width: 480px) {
+  .host-info {
+    width: auto; } }
 
 .user-details {
   width: 100%;

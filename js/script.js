@@ -1175,4 +1175,30 @@ $(document).ready(function(){
     // end of card show and filter input functions
     // ================================
 
+    // ===========================================
+    // start of menu controls
+    // ===========================================
+    $('#showMenu').click(function(){
+        $('.nav-container').css('display', 'flex');
+        $('.search-container').css('display', 'none');
+    });
+
+    $('#showMap').click(function(){
+        $('.search-container').css('display', 'none');
+        $('.map-container').css('display', 'flex');
+    })
+
+    $('#closeNav').click(function(){
+        $('.nav-container').css('display', 'none');
+        $('.search-container').css('display', 'flex');
+    });
+
+    $('#closeMap').click(function(){
+        $('.search-container').css('display', 'flex');
+        $('.map-container').css('display', 'none');
+    })
+    // ===========================================
+    // end of menu controls
+    // ===========================================
+
 });

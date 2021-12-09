@@ -11,6 +11,12 @@
     display: none;
     border-radius: 0 8rem 0 0;
     z-index: 2;
+    @media #{$mobile}{
+        width: 100vw;
+        left: 0;
+        flex-flow: column wrap;
+        border-radius: 0 0 0 0;
+    }
 }
 .close-btn{
     position: absolute;
@@ -33,11 +39,17 @@
 .listing-info{
     display: flex;
     flex-flow: row wrap;
+    @media #{$mobile}{
+        width: 100vw;
+    }
 }
 .info-l{
     display: flex;
     flex-direction: column;
     width: 65%;
+    @media #{$mobile}{
+        width: 100%;
+    }
 }
 .info-r{
     display: flex;
@@ -45,6 +57,9 @@
     align-items: flex-end;
     width: 35%;
     padding: 2rem 4rem 2rem 2rem;
+    @media #{$mobile}{
+        width: 100%;
+    }
 }
 
 // =================================
@@ -60,10 +75,23 @@
     max-height: 70vh;
     object-fit: cover !important;
     object-position: center !important;
+    @media #{$mobile}{
+        height: 50vh;
+        min-width: 100vw;
+    }
 }
 
 .carousel-inner{
     max-height: 70vh;
+    @media #{$mobile}{
+        height: 40vh;
+    }
+}
+
+.carousel-item{
+    @media #{$mobile}{
+        width: auto;
+    }
 }
 
 // =================================
@@ -91,6 +119,9 @@
     flex-flow: column wrap;
     &__title{
         @include title;
+        @media #{$mobile}{
+            font-size: 4rem;
+        }
     }
     &__subtitle{
         @include subtitle;
@@ -245,8 +276,7 @@
     }
     &__bubble{
         max-width: 60%;
-        min-height: 10rem;
-        height: 10rem;
+        min-height: 5rem;
         padding: 2rem;
         border-radius: 2rem;
         @include dark-border;
@@ -254,6 +284,9 @@
     &__username{
         width: 30rem;
         height: 2rem;
+    }
+    @media #{$mobile}{
+        max-width: 100%;
     }
 }
 
@@ -268,6 +301,9 @@
         border-radius: 100%;
         object-fit: cover;
         @include dark-border;
+        @media #{$mobile}{
+            margin-right: 1rem;
+        }
     }
     &__heading{
         @include subtitle;

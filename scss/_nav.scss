@@ -8,6 +8,13 @@
     justify-content: space-between;
     padding: 2rem;
     z-index: 5;
+    @media #{$mobile}{
+        display: none;
+        width: 100vw;
+    }
+    @media #{$tablet}{
+        display: none;
+    }
 }
 .logo{
     @include column-center-flex;
@@ -26,6 +33,10 @@
         background: url(../img/svg/kiwistay.svg);
         background-position: center;
         background-size: cover;
+        &--dark{
+            filter: invert(100%);
+            margin-top: 0;
+        }
     }
     &__subtitle{
         height: 1.4rem;

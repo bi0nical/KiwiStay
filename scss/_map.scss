@@ -7,6 +7,12 @@
     @include column-center-flex;
     justify-content: space-between;
     z-index: 0;
+    @media #{$mobile}{
+        display: none;
+    }
+    @media #{$tablet}{
+        display: none;
+    }
 }
 .map{
     position: relative;
@@ -64,6 +70,9 @@
     z-index: 99;
     &__label{
         text-align: center;
+    }
+    @media #{$mobile}{
+        left: 37.5%;
     }
 }
 
